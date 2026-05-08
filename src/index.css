@@ -1,0 +1,80 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #FDF1E7; /* Light Peach/Sand */
+  --color-text-dark: #2A1B14; /* Deep Brown/Off-Black */
+  --color-accent: #2563EB; /* Bright Blue */
+  --color-accent-light: #F89B74; /* Soft Orange/Peach */
+
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-serif: 'Playfair Display', Georgia, serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-primary);
+  color: var(--color-text-dark); 
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+
+  /* Security: Prevent text selection */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Security: Prevent Printing/Print-to-PDF */
+@media print {
+  body {
+    display: none !important;
+  }
+}
+
+/* Typography Utilities */
+@utility text-massive {
+  font-size: clamp(4rem, 15vw, 15rem);
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  font-weight: 700;
+}
+
+@utility text-huge {
+  font-size: clamp(3rem, 8vw, 8rem);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  font-weight: 600;
+}
+
+@utility font-serif-custom {
+  font-family: var(--font-serif);
+}
+
+/* Layout Utilities */
+@utility glass-3d {
+  background: rgba(253, 241, 231, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 8px 32px rgba(42, 27, 20, 0.05);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(42, 27, 20, 0.2);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(42, 27, 20, 0.4);
+}
