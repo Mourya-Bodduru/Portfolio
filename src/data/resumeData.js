@@ -18,7 +18,7 @@ export const resumeData = {
       id: 4,
       title: "Software Development Intern",
       company: "GMR Aero Technic",
-      duration: "Jul 15, 2025 - Present",
+      duration: "Jul 15, 2026 - Present",
       type: "Internship",
       points: [
         "Contributing to software development, web applications, and database optimization for technical operations.",
