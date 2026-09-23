@@ -116,6 +116,16 @@ export const resumeData = {
       image: "/const.png"
     },
     {
+      id: 6,
+      title: "GMRIT Conference",
+      tagline: "AI-PTIS 2026 International Conference",
+      category: "Live Conference Portal",
+      description: "Official web platform for the 2nd International Conference on AI Powered Technology Integration for Sustainability (AI-PTIS 2026) organized by GMRIT University. Features paper submission guidelines, speaker lineups, event schedules, and attendee registrations.",
+      image: "/gmrconference.png",
+      isLive: true,
+      liveUrl: "https://ai-ptis.in/"
+    },
+    {
       id: 4,
       title: "JeevanGyaan",
       description: "A web-based life skills learning platform for Indian citizens.",
