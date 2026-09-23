@@ -15,6 +15,17 @@ export const resumeData = {
   summary: "Results-driven and detail-oriented BTech student with hands-on experience in full-stack web development and backend engineering. Passionate about technology with strong problem-solving and analytical skills, and a proven ability to collaborate in team-oriented environments. Self-motivated and goal-focused continuous learner dedicated to building scalable, secure, and impactful software solutions.",
   experience: [
     {
+      id: 4,
+      title: "Software Development Intern",
+      company: "GMR Aero Technic",
+      duration: "Jul 15, 2025 - Present",
+      type: "Internship",
+      points: [
+        "Contributing to software development, web applications, and database optimization for technical operations.",
+        "Collaborating with engineering teams to build scalable solutions and streamline digital workflows.",
+      ],
+    },
+    {
       id: 1,
       title: "Core Python And MongoDB",
       company: "Datapro Computer's Pvt Ltd",
