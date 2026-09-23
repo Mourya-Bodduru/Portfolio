@@ -90,25 +90,35 @@ export const resumeData = {
       id: 2,
       title: "Online Notice Board",
       description: "Built a secure, responsive notice platform with role-based access and with SMS service.",
-      image: "/project2.jpg" // Place project2.jpg in your public folder
+      image: "/onb.png"
     },
     {
       id: 1,
       title: "Tourism Management System",
       description: "Developed a real-time web application for efficient booking and user data management.",
-      image: "/project1.jpg" // Place project1.jpg in your public folder
+      image: "/tours.png"
     },
     {
       id: 3,
       title: "Sansthaein Aur Samvidhan",
       description: "A Indian constitution learning platform for institutions and Indian citizens.",
-      image: "/project3.jpg" // Place project3.jpg in your public folder
+      image: "/const.png"
     },
     {
       id: 4,
       title: "JeevanGyaan",
       description: "A web-based life skills learning platform for Indian citizens.",
       image: "/project4.png" // Place project4.jpg in your public folder
+    },
+    {
+      id: 5,
+      title: "ABHYAS School",
+      tagline: "A Center for Excellence",
+      category: "Freelance Project",
+      description: "Designed and developed an official, responsive web platform for ABHYAS School as a freelance project. Features comprehensive academic information, campus facilities, announcements, and a modern user interface.",
+      image: "/project5.png",
+      isLive: true,
+      liveUrl: "https://abhyasschoolgarividi.com/"
     },
   ],
   certifications: [

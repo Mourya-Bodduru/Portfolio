@@ -19,7 +19,7 @@ function Bio() {
         <h2 className="text-5xl md:text-7xl font-bold text-[var(--color-text-dark)] font-serif-custom italic leading-none text-left md:text-center">
           About Me
         </h2>
-        <div className="w-full h-px bg-[var(--color-text-dark)]/10 mt-8"></div>
+        <div className="w-full h-px bg-[var(--color-text-dark)]/20 mt-8"></div>
       </motion.div>
 
       {/* Bio Content */}
@@ -29,7 +29,7 @@ function Bio() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-          className="text-lg sm:text-xl md:text-2xl font-light leading-relaxed text-[var(--color-text-dark)] opacity-90 text-left md:text-center"
+          className="text-lg sm:text-xl md:text-2xl font-semibold leading-relaxed text-[var(--color-text-dark)] text-left md:text-center"
         >
           {summary}
         </motion.p>

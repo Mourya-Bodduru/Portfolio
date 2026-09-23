@@ -49,7 +49,7 @@ const QuoteSection = () => {
           >
             <Quote className="w-12 h-12 md:w-16 md:h-16 text-[var(--color-accent)] opacity-20 absolute -top-6 -left-6 md:-top-8 md:-left-8 -z-10 rotate-180" />
             
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-medium leading-relaxed text-[var(--color-text-dark)] font-serif-custom drop-shadow-sm">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold leading-relaxed text-[var(--color-text-dark)] font-serif-custom drop-shadow-sm">
               "Building scalable, secure, and impactful software solutions by turning complex problems into elegant code."
             </h2>
             

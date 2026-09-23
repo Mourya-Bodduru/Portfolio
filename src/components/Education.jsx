@@ -32,12 +32,12 @@ function Education() {
                   <h3 className="text-3xl md:text-5xl font-bold group-hover:text-[var(--color-accent)] transition-colors duration-300">
                     {edu.degree}
                   </h3>
-                  <span className="text-[var(--color-accent)] font-medium text-sm md:text-base shrink-0 border border-[var(--color-accent)]/30 rounded-full px-4 py-1">
+                  <span className="text-[var(--color-accent)] font-semibold text-sm md:text-base shrink-0 border border-[var(--color-accent)]/40 rounded-full px-4 py-1">
                     {edu.duration}
                   </span>
                 </div>
-                <p className="text-xl md:text-3xl font-serif-custom italic opacity-80 mb-2">{edu.institution}</p>
-                <p className="opacity-50 font-light text-lg">{edu.details}</p>
+                <p className="text-xl md:text-3xl font-serif-custom italic opacity-95 mb-2 font-medium">{edu.institution}</p>
+                <p className="text-[#FDF1E7]/90 font-medium text-lg">{edu.details}</p>
               </motion.div>
             ))}
           </div>
@@ -59,7 +59,7 @@ function Education() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="flex items-start gap-6 text-xl md:text-2xl font-light opacity-80 hover:opacity-100 transition-opacity"
+                  className="flex items-start gap-6 text-xl md:text-2xl font-medium opacity-95 hover:opacity-100 transition-opacity"
                 >
                   <span className="text-[var(--color-accent)] font-bold">―</span>
                   <span className="leading-snug">{cert}</span>
@@ -81,7 +81,7 @@ function Education() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="flex items-start gap-6 text-xl md:text-2xl font-light opacity-80 hover:opacity-100 transition-opacity"
+                  className="flex items-start gap-6 text-xl md:text-2xl font-medium opacity-95 hover:opacity-100 transition-opacity"
                 >
                   <span className="text-[var(--color-accent)] font-bold">―</span>
                   <span className="leading-snug">{achievement}</span>

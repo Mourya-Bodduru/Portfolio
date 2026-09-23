@@ -68,7 +68,7 @@ function App() {
       <Bio />
 
       {/* Main Content Sections */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pb-32 pt-8 md:pt-16 flex flex-col gap-16 md:gap-24">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pb-20 md:pb-28 pt-8 md:pt-14 flex flex-col gap-8 md:gap-12">
         <div id="projects"><Projects /></div>
 
         <QuoteSection />
@@ -128,21 +128,21 @@ function App() {
         <div className="relative z-10 w-full flex flex-col lg:flex-row justify-between items-start mt-auto pt-24 pb-32 gap-16 lg:gap-0">
           
           {/* Left Side: 3 Columns of Links */}
-          <div className="grid grid-cols-2 md:flex md:flex-row gap-12 md:gap-24 text-sm font-medium opacity-80 w-full lg:w-auto">
+          <div className="grid grid-cols-2 md:flex md:flex-row gap-12 md:gap-24 text-sm font-semibold text-white/90 w-full lg:w-auto">
             <div className="flex flex-col gap-3">
-              <span className="opacity-50 mb-2 cursor-default uppercase text-xs tracking-wider">Navigation</span>
+              <span className="text-white/60 font-bold mb-2 cursor-default uppercase text-xs tracking-wider">Navigation</span>
               <a href="#home" className="hover:text-[var(--color-accent)] transition-colors">Home</a>
               <a href="#projects" className="hover:text-[var(--color-accent)] transition-colors">Projects</a>
               <a href="#experience" className="hover:text-[var(--color-accent)] transition-colors">Experience</a>
             </div>
             <div className="flex flex-col gap-3">
-              <span className="opacity-50 mb-2 cursor-default uppercase text-xs tracking-wider">Details</span>
+              <span className="text-white/60 font-bold mb-2 cursor-default uppercase text-xs tracking-wider">Details</span>
               <a href="#skills" className="hover:text-[var(--color-accent)] transition-colors">Skills</a>
               <a href="#education" className="hover:text-[var(--color-accent)] transition-colors">Education</a>
               <span className="cursor-default">Resume</span>
             </div>
             <div className="flex flex-col gap-3 col-span-2 md:col-span-1">
-              <span className="opacity-50 mb-2 cursor-default uppercase text-xs tracking-wider">Connect</span>
+              <span className="text-white/60 font-bold mb-2 cursor-default uppercase text-xs tracking-wider">Connect</span>
               <a href={header.links.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-[var(--color-accent)] transition-colors">LinkedIn</a>
               <a href={header.links.github} target="_blank" rel="noopener noreferrer" className="hover:text-[var(--color-accent)] transition-colors">GitHub</a>
               <a href={`mailto:${header.contact.email}`} className="hover:text-[var(--color-accent)] transition-colors">Email</a>
@@ -155,7 +155,7 @@ function App() {
         </div>
 
         {/* Bottom Bar: Copyright & Legal */}
-        <div className="relative z-10 w-full flex flex-col md:flex-row justify-between items-center text-xs md:text-sm opacity-50 font-medium pt-6">
+        <div className="relative z-10 w-full flex flex-col md:flex-row justify-between items-center text-xs md:text-sm text-white/80 font-semibold pt-6">
           <span>Copyright © 2026 {header.name} - All Rights Reserved</span>
           
         </div>

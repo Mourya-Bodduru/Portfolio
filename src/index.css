@@ -2,7 +2,7 @@
 
 @theme {
   --color-primary: #FDF1E7; /* Light Peach/Sand */
-  --color-text-dark: #2A1B14; /* Deep Brown/Off-Black */
+  --color-text-dark: #110A05; /* Deep High-Contrast Off-Black */
   --color-accent: #2563EB; /* Bright Blue */
   --color-accent-light: #F89B74; /* Soft Orange/Peach */
 
@@ -19,8 +19,10 @@ body {
   background-color: var(--color-primary);
   color: var(--color-text-dark); 
   font-family: var(--font-sans);
+  font-weight: 500;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 
   /* Security: Prevent text selection */
   -webkit-user-select: none;

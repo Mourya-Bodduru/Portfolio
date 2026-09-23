@@ -49,10 +49,10 @@ function Skills() {
   const { skills, coreCompetencies } = resumeData;
 
   return (
-    <section className="w-full relative z-10 py-32 overflow-hidden">
+    <section className="w-full relative z-10 py-10 md:py-16 overflow-hidden">
       
       {/* Title */}
-      <div className="px-4 md:px-0 mb-20 text-center">
+      <div className="px-4 md:px-0 mb-10 md:mb-12 text-center">
         <h2 className="text-6xl md:text-8xl font-bold text-[var(--color-text-dark)] font-serif-custom italic leading-none">
           Skills
         </h2>
@@ -67,7 +67,7 @@ function Skills() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.6, delay: index * 0.1 }}
-            className="group relative bg-white/20 backdrop-blur-md border border-[var(--color-text-dark)]/10 p-8 md:p-10 rounded-[2rem] hover:bg-white/40 hover:shadow-xl transition-all duration-500 overflow-hidden"
+            className="group relative bg-white/20 backdrop-blur-md border border-[var(--color-text-dark)]/10 p-6 md:p-8 rounded-[2rem] hover:bg-white/40 hover:shadow-xl transition-all duration-500 overflow-hidden"
           >
             {/* Hover Gradient Background */}
             <div className="absolute inset-0 bg-gradient-to-br from-[var(--color-accent)] to-transparent opacity-0 group-hover:opacity-5 transition-opacity duration-500"></div>
@@ -82,7 +82,7 @@ function Skills() {
               {skillGroup.items.map((item, i) => (
                 <span 
                   key={i} 
-                  className="px-4 py-2 text-sm md:text-base font-medium rounded-xl border border-[var(--color-text-dark)]/20 text-[var(--color-text-dark)] group-hover:border-[var(--color-text-dark)]/40 transition-colors"
+                  className="px-4 py-2 text-sm md:text-base font-semibold rounded-xl border border-[var(--color-text-dark)]/30 text-[var(--color-text-dark)] group-hover:border-[var(--color-text-dark)]/60 transition-colors"
                 >
                   {item}
                 </span>
@@ -93,8 +93,8 @@ function Skills() {
       </div>
 
       {/* Core Competencies Minimalist List */}
-      <div className="mt-32">
-        <h3 className="text-3xl md:text-5xl font-bold text-[var(--color-text-dark)] font-serif-custom italic mb-12 px-4 md:px-0 text-center">
+      <div className="mt-16 md:mt-20">
+        <h3 className="text-3xl md:text-5xl font-bold text-[var(--color-text-dark)] font-serif-custom italic mb-8 md:mb-10 px-4 md:px-0 text-center">
           Core Competencies
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-4 md:px-0">
@@ -105,7 +105,7 @@ function Skills() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-white/30 backdrop-blur-md border border-white/40 p-8 rounded-[2rem] flex items-center justify-center text-center shadow-xl hover:bg-white/50 transition-colors"
+              className="bg-white/30 backdrop-blur-md border border-white/40 p-6 rounded-[1.75rem] flex items-center justify-center text-center shadow-xl hover:bg-white/50 transition-colors"
             >
               <span className="text-xl md:text-2xl font-bold text-[var(--color-text-dark)] leading-snug">
                 {comp}

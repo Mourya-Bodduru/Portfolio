@@ -24,11 +24,11 @@ function Navbar() {
 
       {/* Centered Pill Menu */}
       <div className="flex-none bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-4 py-2 flex items-center gap-6">
-        <a href="#about" className="text-sm font-medium hover:text-[var(--color-accent)] transition-colors">About</a>
+        <a href="#about" className="text-sm font-semibold hover:text-[var(--color-accent)] transition-colors">About</a>
         <div className="w-8 h-8 bg-white rounded-md flex items-center justify-center">
           <span className="text-[var(--color-text-dark)] font-bold text-xs italic font-serif-custom">BM</span>
         </div>
-        <a href="#projects" className="text-sm font-medium hover:text-[var(--color-accent)] transition-colors">Work</a>
+        <a href="#projects" className="text-sm font-semibold hover:text-[var(--color-accent)] transition-colors">Work</a>
       </div>
 
       {/* Social Links (Right) */}
