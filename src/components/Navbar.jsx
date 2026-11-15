@@ -2,11 +2,18 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { resumeData } from '../data/resumeData';
 
-function Navbar() {
+function Navbar({ currentRoute = 'home', onNavigate }) {
   const { header } = resumeData;
 
   const firstName = header.name.split(' ')[0] || header.name;
   const lastName = header.name.split(' ').slice(1).join(' ') || '';
+
+  const handleNav = (e, route, sectionId = null) => {
+    if (onNavigate) {
+      e.preventDefault();
+      onNavigate(route, sectionId);
+    }
+  };
 
   return (
     <motion.nav 
@@ -17,18 +24,49 @@ function Navbar() {
     >
       {/* Brand Name (Left) */}
       <div className="flex-1 flex justify-center md:justify-start w-full">
-        <a href="#home" className="font-bold text-xl tracking-tight flex items-center gap-1 hover:opacity-80 transition-opacity">
+        <a 
+          href="#home" 
+          onClick={(e) => handleNav(e, 'home', 'home')}
+          className="font-bold text-xl tracking-tight flex items-center gap-1 hover:opacity-80 transition-opacity"
+        >
           {firstName} <span className="text-[var(--color-accent)]">•</span> {lastName}
         </a>
       </div>
 
       {/* Centered Pill Menu */}
-      <div className="flex-none bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-4 py-2 flex items-center gap-6">
-        <a href="#about" className="text-sm font-semibold hover:text-[var(--color-accent)] transition-colors">About</a>
-        <div className="w-8 h-8 bg-white rounded-md flex items-center justify-center">
+      <div className="flex-none bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-3.5 sm:px-5 py-2 flex items-center gap-3 sm:gap-6">
+        <a 
+          href="#about" 
+          onClick={(e) => handleNav(e, 'home', 'about')}
+          className="text-xs sm:text-sm font-semibold hover:text-[var(--color-accent)] transition-colors"
+        >
+          About
+        </a>
+        <a 
+          href="#projects" 
+          onClick={(e) => handleNav(e, 'home', 'projects')}
+          className="text-xs sm:text-sm font-semibold hover:text-[var(--color-accent)] transition-colors"
+        >
+          Work
+        </a>
+        <div 
+          onClick={(e) => handleNav(e, 'home', 'home')}
+          className="w-7 h-7 sm:w-8 sm:h-8 bg-white rounded-md flex items-center justify-center cursor-pointer hover:scale-105 transition-transform"
+          title="Home"
+        >
           <span className="text-[var(--color-text-dark)] font-bold text-xs italic font-serif-custom">BM</span>
         </div>
-        <a href="#projects" className="text-sm font-semibold hover:text-[var(--color-accent)] transition-colors">Work</a>
+        <a 
+          href="#/achievements" 
+          onClick={(e) => handleNav(e, 'achievements')}
+          className={`text-xs sm:text-sm font-semibold transition-colors flex items-center gap-1.5 ${
+            currentRoute === 'achievements' 
+              ? 'text-[var(--color-accent)] font-bold underline underline-offset-4' 
+              : 'hover:text-[var(--color-accent)]'
+          }`}
+        >
+          Achievements
+        </a>
       </div>
 
       {/* Social Links (Right) */}

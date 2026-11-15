@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero3D from './components/Hero3D';
 import About from './components/About';
@@ -10,12 +10,61 @@ import Bio from './components/Bio';
 import QuoteSection from './components/QuoteSection';
 import EnergyBackground from './components/EnergyBackground';
 import ResumeViewer from './components/ResumeViewer';
+import AchievementsPage from './components/AchievementsPage';
 import { resumeData } from './data/resumeData';
 
 function App() {
   const { header } = resumeData;
   const firstName = header.name.split(' ')[0] || header.name;
   const lastName = header.name.split(' ').slice(1).join(' ') || '';
+
+  const [currentRoute, setCurrentRoute] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const hash = window.location.hash.toLowerCase();
+      if (hash.includes('achievement') || hash.includes('post')) {
+        return 'achievements';
+      }
+    }
+    return 'home';
+  });
+
+  const navigateTo = (route, sectionId = null) => {
+    setCurrentRoute(route);
+    if (route === 'achievements') {
+      window.location.hash = '#/achievements';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      if (sectionId) {
+        window.location.hash = `#${sectionId}`;
+        setTimeout(() => {
+          const el = document.getElementById(sectionId);
+          if (el) {
+            el.scrollIntoView({ behavior: 'smooth' });
+          } else {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }
+        }, 80);
+      } else {
+        window.location.hash = '#home';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
+  };
+
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash.toLowerCase();
+      if (hash.includes('achievement') || hash.includes('post')) {
+        setCurrentRoute('achievements');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        setCurrentRoute('home');
+      }
+    };
+
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
 
   useEffect(() => {
     // Prevent Right Click
@@ -49,39 +98,45 @@ function App() {
       {/* 3D Scroll-Reactive Energy Particle Field (Concept 1) */}
       <EnergyBackground />
 
-      <Navbar />
+      <Navbar currentRoute={currentRoute} onNavigate={navigateTo} />
 
-      {/* Hero Section with 3D Background */}
-      <div id="home" className="relative min-h-screen w-full flex flex-col justify-center overflow-hidden">
-        {/* 3D Background - absolute behind text */}
-        <div className="absolute inset-0 z-0 pointer-events-none">
-          <Hero3D />
-        </div>
-        
-        {/* Hero Content (Includes its own background image now) */}
-        <div className="relative z-10 w-full h-full">
-          <About />
-        </div>
-      </div>
+      {currentRoute === 'achievements' ? (
+        <AchievementsPage onBack={() => navigateTo('home')} />
+      ) : (
+        <>
+          {/* Hero Section with 3D Background */}
+          <div id="home" className="relative min-h-screen w-full flex flex-col justify-center overflow-hidden">
+            {/* 3D Background - absolute behind text */}
+            <div className="absolute inset-0 z-0 pointer-events-none">
+              <Hero3D />
+            </div>
+            
+            {/* Hero Content (Includes its own background image now) */}
+            <div className="relative z-10 w-full h-full">
+              <About />
+            </div>
+          </div>
 
-      {/* Dedicated Bio/About Section */}
-      <Bio />
+          {/* Dedicated Bio/About Section */}
+          <Bio />
 
-      {/* Main Content Sections */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pb-20 md:pb-28 pt-8 md:pt-14 flex flex-col gap-8 md:gap-12">
-        <div id="projects"><Projects /></div>
+          {/* Main Content Sections */}
+          <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 pb-20 md:pb-28 pt-8 md:pt-14 flex flex-col gap-8 md:gap-12">
+            <div id="projects"><Projects /></div>
 
-        <QuoteSection />
+            <QuoteSection />
 
-        <div id="experience"><Experience /></div>
-        <div id="skills"><Skills /></div>
-        <div id="education"><Education /></div>
-      </div>
+            <div id="experience"><Experience /></div>
+            <div id="skills"><Skills /></div>
+            <div id="education"><Education onViewAllAchievements={() => navigateTo('achievements')} /></div>
+          </div>
 
-      {/* Resume Section Above Footer */}
-      <div className="relative w-full bg-[var(--color-primary)] z-10">
-        <ResumeViewer />
-      </div>
+          {/* Resume Section Above Footer */}
+          <div className="relative w-full bg-[var(--color-primary)] z-10">
+            <ResumeViewer />
+          </div>
+        </>
+      )}
 
       {/* Spylt-Inspired Footer */}
       <footer className="w-full min-h-screen relative overflow-hidden flex flex-col justify-between bg-[#111111] text-[#FDF1E7] pt-12 pb-6 px-6 md:px-12 font-sans z-20">
@@ -131,9 +186,10 @@ function App() {
           <div className="grid grid-cols-2 md:flex md:flex-row gap-12 md:gap-24 text-sm font-semibold text-white/90 w-full lg:w-auto">
             <div className="flex flex-col gap-3">
               <span className="text-white/60 font-bold mb-2 cursor-default uppercase text-xs tracking-wider">Navigation</span>
-              <a href="#home" className="hover:text-[var(--color-accent)] transition-colors">Home</a>
-              <a href="#projects" className="hover:text-[var(--color-accent)] transition-colors">Projects</a>
-              <a href="#experience" className="hover:text-[var(--color-accent)] transition-colors">Experience</a>
+              <a href="#home" onClick={(e) => { e.preventDefault(); navigateTo('home', 'home'); }} className="hover:text-[var(--color-accent)] transition-colors">Home</a>
+              <a href="#projects" onClick={(e) => { e.preventDefault(); navigateTo('home', 'projects'); }} className="hover:text-[var(--color-accent)] transition-colors">Projects</a>
+              <a href="#experience" onClick={(e) => { e.preventDefault(); navigateTo('home', 'experience'); }} className="hover:text-[var(--color-accent)] transition-colors">Experience</a>
+              <a href="#/achievements" onClick={(e) => { e.preventDefault(); navigateTo('achievements'); }} className="hover:text-[var(--color-accent)] transition-colors">Achievements</a>
             </div>
             <div className="flex flex-col gap-3">
               <span className="text-white/60 font-bold mb-2 cursor-default uppercase text-xs tracking-wider">Details</span>

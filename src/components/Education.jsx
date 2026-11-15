@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { resumeData } from '../data/resumeData';
 
-function Education() {
+function Education({ onViewAllAchievements }) {
   const { education, certifications, achievements } = resumeData;
 
   return (
@@ -88,6 +88,30 @@ function Education() {
                 </motion.li>
               ))}
             </ul>
+
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="mt-8"
+            >
+              <a
+                href="#/achievements"
+                onClick={(e) => {
+                  if (onViewAllAchievements) {
+                    e.preventDefault();
+                    onViewAllAchievements();
+                  }
+                }}
+                className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-[var(--color-accent)] text-white font-bold text-sm hover:opacity-90 transition-all shadow-md group cursor-pointer"
+              >
+                <span>View Full Achievements & Posts (SIH 2024 Gallery)</span>
+                <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </a>
+            </motion.div>
           </div>
 
         </div>

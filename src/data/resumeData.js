@@ -18,11 +18,23 @@ export const resumeData = {
       id: 4,
       title: "Software Development Intern",
       company: "GMR Aero Technic",
-      duration: "Jul 15, 2026 - Present",
+      duration: "Jul 15, 2026 - Oct 30, 2026",
       type: "Internship",
       points: [
         "Contributing to software development, web applications, and database optimization for technical operations.",
         "Collaborating with engineering teams to build scalable solutions and streamline digital workflows.",
+      ],
+    },
+    {
+      id: 5,
+      title: "Web Development Intern",
+      company: "TECHNGLOBAL PRIVATE LIMITED",
+      duration: "Jul 2026 - Sep 2026",
+      type: "Remote Internship",
+      location: "Bengaluru, Karnataka, India (Remote)",
+      points: [
+        "Contributed to front-end and full-stack web development, building responsive interfaces and integrating web services.",
+        "Collaborated with remote engineering teams to implement features, optimize performance, and streamline workflows.",
       ],
     },
     {
@@ -116,6 +128,14 @@ export const resumeData = {
       image: "/const.png"
     },
     {
+      id: 7,
+      title: "SecureChat",
+      tagline: "Enter your secret dimension",
+      category: "Encrypted Chat Platform",
+      description: "A secure and private real-time communication platform built for confidential messaging, featuring room-based secret keys and end-to-end encrypted chat sessions.",
+      image: "/securechat.png"
+    },
+    {
       id: 6,
       title: "GMRIT Conference",
       tagline: "AI-PTIS 2026 International Conference",
@@ -152,8 +172,44 @@ export const resumeData = {
   ],
   achievements: [
     "Winner of SIH(Smart India Hackathon) 2024 , PSID - 1699.",
+    "Executive Recognition by CEO, COO, CDO and Department HODs at GMR Aero Technic for real-time project delivery.",
     "Participation in Hack the Vibe Hackathon 2025.",
     "Demonstrated leadership, teamwork, and problem-solving under time constraints."
+  ],
+  achievementPosts: [
+    {
+      id: 1,
+      slug: "sih-2024",
+      title: "Smart India Hackathon (SIH) 2024 — Grand Finale Winner",
+      badge: "National 1st Place Winner",
+      prize: "₹ 1,00,000 Cash Prize",
+      event: "Smart India Hackathon 2024 (Software Edition)",
+      organizedBy: "Ministry of Education's Innovation Cell & AICTE",
+      date: "December 11 - 12, 2024",
+      team: "Team Aavishkar",
+      psid: "PSID - 1699",
+      image: "/SIH.jpg",
+      isWinner: true,
+      summary: "Grand Finale Winner at the prestigious Smart India Hackathon 2024 (Software Edition), securing 1st place and ₹1,00,000 cash prize for developing an innovative solution for Problem Statement PSID-1699.",
+      description: "Secured 1st Place at the Grand Finale of Smart India Hackathon (SIH) 2024 (Software Edition) — recognized globally as the world's largest open-innovation hackathon organized by the Ministry of Education's Innovation Cell, Government of India, and AICTE.\n\nCompeting against thousands of elite teams across the country, our team (Team Aavishkar) worked through an intense 36-hour non-stop hackathon sprint to architect, build, and deploy an end-to-end scalable software solution tackling Problem Statement ID PSID-1699. Our working prototype was rigorously evaluated and selected for the prestigious 1st place championship award and a ₹1,00,000 prize.",
+      tags: ["Smart India Hackathon", "SIH 2024", "National Winner", "Team Aavishkar", "PSID 1699", "AICTE", "Ministry of Education"]
+    },
+    {
+      id: 2,
+      slug: "gmr-leadership-recognition",
+      title: "Executive & Leadership Recognition at GMR Aero Technic",
+      badge: "Executive Leadership Recognition",
+      category: "Corporate Recognition",
+      organization: "GMR Aero Technic",
+      recognizedBy: "CEO, COO, CDO & Department HODs",
+      date: "2026",
+      team: "Software Development & Technical Operations",
+      image: null,
+      isWinner: false,
+      summary: "Special executive recognition and appreciation from top leadership—including CEO, COO, CDO, and Department Heads at GMR Aero Technic—for delivering real-time software systems in live aviation operations.",
+      description: "Earned high-level executive recognition and commendation from the Chief Executive Officer (CEO), Chief Operating Officer (COO), Chief Digital Officer (CDO), and Heads of Departments (HODs) across technical and operational divisions at GMR Aero Technic.\n\nCommended for engineering and deploying production-grade, real-time web applications, database management systems, and workflow automation tools. These systems streamlined core operational tracking, provided transparent cross-departmental data visibility, and accelerated turnaround times for live aircraft maintenance operations.",
+      tags: ["GMR Aero Technic", "Executive Recognition", "CEO & Leadership", "Real-Time Systems", "Digital Transformation", "Aviation Operations"]
+    }
   ],
   coreCompetencies: [
     "Full Stack Web Development",
