@@ -12,7 +12,6 @@ import EnergyBackground from './components/EnergyBackground';
 import ResumeViewer from './components/ResumeViewer';
 import AchievementsPage from './components/AchievementsPage';
 import DarkPortfolio from './components/dark/DarkPortfolio';
-import ThemeToggle from './components/ThemeToggle';
 import { resumeData } from './data/resumeData';
 
 function App() {
@@ -121,9 +120,6 @@ function App() {
         : 'bg-[var(--color-primary)] text-[var(--color-text-dark)] selection:bg-[#2563EB] selection:text-white'
     }`}>
       
-      {/* Persistent Floating Theme Switcher */}
-      <ThemeToggle theme={theme} onToggle={toggleTheme} />
-
       {currentRoute === 'achievements' ? (
         <div className={`relative min-h-screen ${isDark ? 'bg-[#070709]' : ''}`}>
           {!isDark && <EnergyBackground />}

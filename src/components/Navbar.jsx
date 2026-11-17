@@ -74,7 +74,7 @@ function Navbar({ currentRoute = 'home', onNavigate, onToggleTheme, theme = 'lig
           <button
             onClick={onToggleTheme}
             className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full bg-white/20 hover:bg-white/30 text-white text-xs font-semibold transition-all hover:scale-105 cursor-pointer ml-1 border border-white/30"
-            title="Switch to 3D Cyber Dark Theme"
+            title="Switch to Dark Theme"
           >
             <Moon className="w-3.5 h-3.5 text-cyan-300" />
             <span className="hidden sm:inline">Dark</span>
