@@ -76,7 +76,7 @@ const ResumeViewer = () => {
                 </div>
                 
                 <iframe
-                  src="/resume.pdf#toolbar=0&view=FitH"
+                  src="/resume.pdf#toolbar=0&navpanes=0&scrollbar=0&view=FitH"
                   className="w-full h-full border-none relative z-10"
                   title="Resume"
                 />

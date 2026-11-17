@@ -1,18 +1,23 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Sun, Moon, Sparkles, Terminal, Menu, X, ArrowUpRight } from 'lucide-react';
+import { Sun, Menu, X, ArrowUpRight } from 'lucide-react';
 import { resumeData } from '../../data/resumeData';
 
-function DarkNavbar({ onToggleTheme, currentTheme = 'dark', onNavigate, currentRoute = 'home' }) {
+function DarkNavbar({ onToggleTheme, onNavigate, currentRoute = 'home' }) {
   const { header } = resumeData;
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  const firstName = header.name.split(' ')[0] || header.name;
+  const lastName = header.name.split(' ').slice(1).join(' ') || '';
+
   const navLinks = [
-    { label: 'Dossier', id: 'about-dark' },
-    { label: 'Projects', id: 'projects-dark' },
-    { label: 'Timeline', id: 'experience-dark' },
-    { label: 'Matrix', id: 'skills-dark' },
-    { label: 'Accolades', route: 'achievements' }
+    { label: 'About', id: 'about' },
+    { label: 'Projects', id: 'projects' },
+    { label: 'Experience', id: 'experience' },
+    { label: 'Skills', id: 'skills' },
+    { label: 'Education', id: 'education' },
+    { label: 'Achievements', route: 'achievements' },
+    { label: 'Resume', id: 'resume' },
   ];
 
   const handleLinkClick = (e, link) => {
@@ -33,14 +38,14 @@ function DarkNavbar({ onToggleTheme, currentTheme = 'dark', onNavigate, currentR
 
   return (
     <motion.header
-      initial={{ opacity: 0, y: -25 }}
+      initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, ease: 'easeOut' }}
-      className="fixed top-0 left-0 w-full z-50 px-4 sm:px-6 lg:px-10 py-4 pointer-events-auto"
+      transition={{ duration: 0.5, ease: 'easeOut' }}
+      className="fixed top-0 left-0 w-full z-50 px-4 sm:px-6 lg:px-12 py-4 pointer-events-auto"
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
         
-        {/* Brand Terminal Node (Left) */}
+        {/* Brand Name (Left) */}
         <a 
           href="#home"
           onClick={(e) => {
@@ -48,27 +53,24 @@ function DarkNavbar({ onToggleTheme, currentTheme = 'dark', onNavigate, currentR
             if (onNavigate) onNavigate('home', 'home');
             window.scrollTo({ top: 0, behavior: 'smooth' });
           }}
-          className="group flex items-center gap-2.5 px-4 py-2 rounded-full bg-[#0D0D14]/80 backdrop-blur-xl border border-white/10 hover:border-cyan-500/40 transition-all duration-300 shadow-[0_0_20px_rgba(0,0,0,0.5)]"
+          className="group flex items-center gap-2 px-4 py-2 rounded-full bg-[#11121A]/80 backdrop-blur-xl border border-white/10 hover:border-sky-400/50 transition-all duration-300 shadow-lg"
         >
-          <span className="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-pulse shadow-[0_0_10px_#00F2FE]"></span>
-          <span className="font-mono text-xs sm:text-sm font-bold tracking-wider text-white uppercase group-hover:text-cyan-400 transition-colors">
-            MOURYA <span className="text-cyan-400">//</span> 01
-          </span>
-          <span className="hidden md:inline text-[10px] font-mono px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-300 border border-cyan-500/20">
-            SYSTEM ONLINE
+          <span className="w-2.5 h-2.5 rounded-full bg-sky-400 animate-pulse"></span>
+          <span className="text-sm font-bold tracking-tight text-white group-hover:text-sky-300 transition-colors">
+            {firstName} <span className="text-sky-400">•</span> {lastName}
           </span>
         </a>
 
-        {/* Centered Futuristic Glass Pill Menu (Desktop) */}
-        <nav className="hidden lg:flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-[#0D0D14]/85 backdrop-blur-2xl border border-white/10 shadow-[0_0_30px_rgba(0,0,0,0.7)]">
+        {/* Centered Pill Menu (Desktop) */}
+        <nav className="hidden lg:flex items-center gap-1 px-4 py-1.5 rounded-full bg-[#11121A]/85 backdrop-blur-xl border border-white/10 shadow-xl">
           {navLinks.map((link, idx) => (
             <a
               key={idx}
               href={`#${link.id || link.route}`}
               onClick={(e) => handleLinkClick(e, link)}
-              className={`px-3.5 py-1.5 rounded-full text-xs font-mono font-medium tracking-wider uppercase transition-all duration-300 ${
+              className={`px-3.5 py-1.5 rounded-full text-xs font-semibold tracking-wide transition-all duration-300 ${
                 link.route === 'achievements' && currentRoute === 'achievements'
-                  ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 shadow-[0_0_15px_rgba(0,242,254,0.3)]'
+                  ? 'bg-sky-500/20 text-sky-300 border border-sky-500/30 font-bold'
                   : 'text-zinc-300 hover:text-white hover:bg-white/5'
               }`}
             >
@@ -77,37 +79,37 @@ function DarkNavbar({ onToggleTheme, currentTheme = 'dark', onNavigate, currentR
           ))}
         </nav>
 
-        {/* Action Controls (Right): Theme Toggle & Connect */}
-        <div className="flex items-center gap-2.5 sm:gap-3">
+        {/* Right Controls: Theme Toggle & Contact */}
+        <div className="flex items-center gap-3">
           
-          {/* Theme Toggle Button */}
+          {/* Light Theme Switcher */}
           <button
             onClick={onToggleTheme}
-            className="group relative flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded-full bg-gradient-to-r from-amber-500/20 to-orange-500/20 hover:from-amber-500/30 hover:to-orange-500/30 text-amber-200 border border-amber-500/30 hover:border-amber-400/50 transition-all duration-300 shadow-[0_0_20px_rgba(245,158,11,0.2)] cursor-pointer"
+            className="group flex items-center gap-2 px-3.5 py-2 rounded-full bg-amber-500/15 hover:bg-amber-500/25 text-amber-200 border border-amber-500/30 hover:border-amber-400/50 transition-all duration-300 shadow-md cursor-pointer"
             title="Switch back to Light Theme"
           >
             <Sun className="w-4 h-4 text-amber-300 group-hover:rotate-45 transition-transform duration-500" />
-            <span className="text-xs font-mono font-bold tracking-wider uppercase hidden sm:inline text-amber-200">
-              LIGHT THEME
+            <span className="text-xs font-semibold tracking-wide hidden sm:inline text-amber-200">
+              Light Theme
             </span>
           </button>
 
-          {/* Contact / Terminal Link */}
+          {/* Contact Button */}
           <a
             href={`mailto:${header.contact.email}`}
-            className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 hover:border-cyan-400 font-mono text-xs font-bold tracking-wider uppercase transition-all shadow-[0_0_15px_rgba(0,242,254,0.15)] hover:shadow-[0_0_25px_rgba(0,242,254,0.3)]"
+            className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-white/5 hover:bg-white/10 text-white border border-white/15 hover:border-white/30 text-xs font-semibold transition-all"
           >
-            <span>TRANSMIT</span>
-            <ArrowUpRight className="w-3.5 h-3.5" />
+            <span>Contact</span>
+            <ArrowUpRight className="w-3.5 h-3.5 text-zinc-400" />
           </a>
 
           {/* Mobile Menu Hamburger */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-2 rounded-full bg-[#0D0D14]/80 text-white border border-white/10 hover:border-cyan-500/40"
+            className="lg:hidden p-2 rounded-full bg-[#11121A]/80 text-white border border-white/10 hover:border-sky-400/40"
             aria-label="Toggle Navigation"
           >
-            {mobileMenuOpen ? <X className="w-5 h-5 text-cyan-400" /> : <Menu className="w-5 h-5" />}
+            {mobileMenuOpen ? <X className="w-5 h-5 text-sky-400" /> : <Menu className="w-5 h-5" />}
           </button>
         </div>
       </div>
@@ -119,11 +121,11 @@ function DarkNavbar({ onToggleTheme, currentTheme = 'dark', onNavigate, currentR
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="lg:hidden mt-3 max-w-md mx-auto rounded-3xl bg-[#09090E]/95 backdrop-blur-2xl border border-white/15 p-5 shadow-2xl flex flex-col gap-2"
+            className="lg:hidden mt-3 max-w-md mx-auto rounded-2xl bg-[#0E0F17]/95 backdrop-blur-2xl border border-white/15 p-5 shadow-2xl flex flex-col gap-2"
           >
-            <div className="flex items-center justify-between pb-3 border-b border-white/10 text-xs font-mono text-zinc-400">
-              <span>SYSTEM NAVIGATION</span>
-              <span className="text-cyan-400">STATUS: ACTIVE</span>
+            <div className="flex items-center justify-between pb-3 border-b border-white/10 text-xs font-medium text-zinc-400">
+              <span>Navigation</span>
+              <span className="text-sky-400 font-bold">Dark Theme</span>
             </div>
 
             {navLinks.map((link, idx) => (
@@ -131,9 +133,9 @@ function DarkNavbar({ onToggleTheme, currentTheme = 'dark', onNavigate, currentR
                 key={idx}
                 href={`#${link.id || link.route}`}
                 onClick={(e) => handleLinkClick(e, link)}
-                className="flex items-center justify-between py-2.5 px-4 rounded-xl text-sm font-mono text-zinc-200 hover:text-cyan-400 hover:bg-white/5 transition-colors"
+                className="flex items-center justify-between py-2 px-3 rounded-xl text-sm font-medium text-zinc-200 hover:text-sky-300 hover:bg-white/5 transition-colors"
               >
-                <span>// 0{idx + 1} {link.label.toUpperCase()}</span>
+                <span>{link.label}</span>
                 <ArrowUpRight className="w-4 h-4 text-zinc-500" />
               </a>
             ))}
@@ -144,10 +146,10 @@ function DarkNavbar({ onToggleTheme, currentTheme = 'dark', onNavigate, currentR
                   setMobileMenuOpen(false);
                   onToggleTheme();
                 }}
-                className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl bg-amber-500/20 text-amber-300 font-mono text-xs font-bold border border-amber-500/30"
+                className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl bg-amber-500/20 text-amber-200 text-xs font-semibold border border-amber-500/30"
               >
-                <Sun className="w-4 h-4" />
-                <span>SWITCH TO LIGHT THEME</span>
+                <Sun className="w-4 h-4 text-amber-300" />
+                <span>Switch to Light Theme</span>
               </button>
             </div>
           </motion.div>

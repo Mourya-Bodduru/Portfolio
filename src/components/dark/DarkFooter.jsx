@@ -1,5 +1,5 @@
 import React from 'react';
-import { Mail, ArrowUp, Terminal, Shield } from 'lucide-react';
+import { Mail, ArrowUp } from 'lucide-react';
 import { resumeData } from '../../data/resumeData';
 
 function DarkFooter({ onNavigate }) {
@@ -9,55 +9,66 @@ function DarkFooter({ onNavigate }) {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const handleNav = (e, sectionId) => {
+    e.preventDefault();
+    if (onNavigate) {
+      onNavigate('home', sectionId);
+    } else {
+      const el = document.getElementById(sectionId);
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
-    <footer className="relative w-full bg-[#050508] border-t border-white/10 pt-20 pb-12 px-4 sm:px-6 lg:px-12 z-20 overflow-hidden">
+    <footer className="relative w-full bg-[#08090E] border-t border-white/10 pt-20 pb-12 px-4 sm:px-6 lg:px-12 z-20 overflow-hidden">
       
-      {/* Background Gradient Line */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-[1px] bg-gradient-to-r from-transparent via-cyan-400 to-transparent shadow-[0_0_15px_#00F2FE]"></div>
+      {/* Subtle Gradient Line */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-[1px] bg-gradient-to-r from-transparent via-sky-400 to-transparent"></div>
 
       <div className="max-w-7xl mx-auto flex flex-col justify-between">
         
         {/* Massive Center Hashtag */}
         <div className="w-full text-center mb-16 pointer-events-none">
-          <h2 className="text-[11vw] sm:text-[9vw] font-black tracking-tighter uppercase leading-none m-0 p-0 bg-clip-text text-transparent bg-gradient-to-b from-white/20 via-white/5 to-transparent select-none">
+          <h2 className="text-[10vw] sm:text-[8vw] font-bold tracking-tight uppercase leading-none m-0 p-0 text-white/10 select-none">
             #MOURYA BODDURU
           </h2>
         </div>
 
-        {/* Middle Navigation & Social Coordinates */}
+        {/* Navigation & Social */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 sm:gap-14 pb-16 border-b border-white/10 items-start">
           
-          {/* Col 1: System Identity */}
+          {/* Col 1: Bio Excerpt */}
           <div className="flex flex-col gap-3">
-            <div className="flex items-center gap-2 text-cyan-400 font-mono text-xs uppercase tracking-widest font-bold">
-              <Terminal className="w-4 h-4" />
-              <span>TERMINAL NODE // HYD_IN</span>
-            </div>
+            <span className="text-white font-bold text-sm tracking-wide">
+              {header.name}
+            </span>
             <p className="text-zinc-400 text-sm font-normal max-w-sm leading-relaxed">
-              Full-Stack Developer, SIH '24 Grand Finale Winner, and Backend Engineer architecting resilient digital applications.
+              {header.title} focused on building scalable, secure, and impactful software solutions.
             </p>
           </div>
 
           {/* Col 2: Navigation Links */}
-          <div className="flex flex-col gap-3 font-mono text-xs">
-            <span className="text-white font-bold uppercase tracking-widest text-zinc-400 mb-1">Navigation System</span>
-            <div className="grid grid-cols-2 gap-2 text-zinc-400">
-              <a href="#home" onClick={(e) => { e.preventDefault(); scrollToTop(); }} className="hover:text-cyan-400 transition-colors">// HOME</a>
-              <a href="#about-dark" className="hover:text-cyan-400 transition-colors">// DOSSIER</a>
-              <a href="#projects-dark" className="hover:text-cyan-400 transition-colors">// PROJECTS</a>
-              <a href="#experience-dark" className="hover:text-cyan-400 transition-colors">// TIMELINE</a>
-              <a href="#skills-dark" className="hover:text-cyan-400 transition-colors">// MATRIX</a>
-              <button onClick={() => onNavigate && onNavigate('achievements')} className="text-left hover:text-amber-400 transition-colors cursor-pointer">// ACCOLADES</button>
+          <div className="flex flex-col gap-3 text-sm">
+            <span className="text-zinc-400 font-semibold uppercase text-xs tracking-wider">Navigation</span>
+            <div className="grid grid-cols-2 gap-2 text-zinc-300">
+              <a href="#home" onClick={(e) => { e.preventDefault(); scrollToTop(); }} className="hover:text-sky-300 transition-colors">Home</a>
+              <a href="#about" onClick={(e) => handleNav(e, 'about')} className="hover:text-sky-300 transition-colors">About</a>
+              <a href="#projects" onClick={(e) => handleNav(e, 'projects')} className="hover:text-sky-300 transition-colors">Projects</a>
+              <a href="#experience" onClick={(e) => handleNav(e, 'experience')} className="hover:text-sky-300 transition-colors">Experience</a>
+              <a href="#skills" onClick={(e) => handleNav(e, 'skills')} className="hover:text-sky-300 transition-colors">Skills</a>
+              <a href="#education" onClick={(e) => handleNav(e, 'education')} className="hover:text-sky-300 transition-colors">Education</a>
+              <button onClick={() => onNavigate && onNavigate('achievements')} className="text-left hover:text-sky-300 transition-colors cursor-pointer">Achievements</button>
+              <a href="#resume" onClick={(e) => handleNav(e, 'resume')} className="hover:text-sky-300 transition-colors">Resume</a>
             </div>
           </div>
 
-          {/* Col 3: Social & Transmit */}
+          {/* Col 3: Social Links */}
           <div className="flex flex-col gap-4">
-            <span className="text-white font-bold uppercase tracking-widest text-xs font-mono text-zinc-400">Network Frequencies</span>
+            <span className="text-zinc-400 font-semibold uppercase text-xs tracking-wider">Connect</span>
             <div className="flex items-center gap-3">
               <a
                 href={`mailto:${header.contact.email}`}
-                className="w-11 h-11 rounded-full bg-white/5 hover:bg-cyan-500/20 text-zinc-300 hover:text-cyan-300 border border-white/10 hover:border-cyan-500/40 flex items-center justify-center transition-all shadow-md"
+                className="w-11 h-11 rounded-full bg-white/5 hover:bg-sky-500/20 text-zinc-300 hover:text-sky-300 border border-white/10 hover:border-sky-500/40 flex items-center justify-center transition-all shadow-md"
                 aria-label="Email"
               >
                 <Mail className="w-4 h-4" />
@@ -86,8 +97,8 @@ function DarkFooter({ onNavigate }) {
               </a>
               <button
                 onClick={scrollToTop}
-                className="ml-auto w-11 h-11 rounded-full bg-cyan-500/10 hover:bg-cyan-500/25 text-cyan-300 border border-cyan-500/30 flex items-center justify-center transition-all cursor-pointer"
-                title="Return to Orbit / Top"
+                className="ml-auto w-11 h-11 rounded-full bg-sky-500/10 hover:bg-sky-500/25 text-sky-300 border border-sky-500/30 flex items-center justify-center transition-all cursor-pointer"
+                title="Return to Top"
               >
                 <ArrowUp className="w-4 h-4" />
               </button>
@@ -96,13 +107,9 @@ function DarkFooter({ onNavigate }) {
 
         </div>
 
-        {/* Bottom Status & Copyright */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-zinc-500">
-          <span>COPYRIGHT © 2026 {header.name.toUpperCase()} // ALL RIGHTS RESERVED</span>
-          <span className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-            <span>SYSTEM ENCRYPTION ACTIVE // TLS 1.3</span>
-          </span>
+        {/* Bottom Copyright */}
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-500">
+          <span>Copyright © 2026 {header.name} - All Rights Reserved</span>
         </div>
 
       </div>
