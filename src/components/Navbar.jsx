@@ -1,8 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Moon } from 'lucide-react';
 import { resumeData } from '../data/resumeData';
 
-function Navbar({ currentRoute = 'home', onNavigate }) {
+function Navbar({ currentRoute = 'home', onNavigate, onToggleTheme, theme = 'light' }) {
   const { header } = resumeData;
 
   const firstName = header.name.split(' ')[0] || header.name;
@@ -34,7 +35,7 @@ function Navbar({ currentRoute = 'home', onNavigate }) {
       </div>
 
       {/* Centered Pill Menu */}
-      <div className="flex-none bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-3.5 sm:px-5 py-2 flex items-center gap-3 sm:gap-6">
+      <div className="flex-none bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-3.5 sm:px-5 py-2 flex items-center gap-3 sm:gap-5">
         <a 
           href="#about" 
           onClick={(e) => handleNav(e, 'home', 'about')}
@@ -67,6 +68,18 @@ function Navbar({ currentRoute = 'home', onNavigate }) {
         >
           Achievements
         </a>
+
+        {/* Dark Theme Trigger */}
+        {onToggleTheme && (
+          <button
+            onClick={onToggleTheme}
+            className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full bg-white/20 hover:bg-white/30 text-white text-xs font-semibold transition-all hover:scale-105 cursor-pointer ml-1 border border-white/30"
+            title="Switch to 3D Cyber Dark Theme"
+          >
+            <Moon className="w-3.5 h-3.5 text-cyan-300" />
+            <span className="hidden sm:inline">Dark</span>
+          </button>
+        )}
       </div>
 
       {/* Social Links (Right) */}
